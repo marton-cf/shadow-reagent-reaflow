@@ -1,10 +1,14 @@
 (ns app.core
   (:require [reagent.core :as r]
-            [app.views :as views]))
+            ["reaflow" :refer [Canvas]]
+            ))
+
+(def flow
+  (r/adapt-react-class Canvas))
 
 (defn ^:dev/after-load start
   []
-  (r/render-component [views/app]
+  (r/render-component [flow]
                       (.getElementById js/document "app")))
 
 (defn ^:export main
